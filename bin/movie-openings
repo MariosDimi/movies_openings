@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require './lib/movies_openings'
+#require './lib/movies_openings'
+require "bundler/setup"
+require "movies_openings"
 
 MoviesOpenings::CLI.new.call
