@@ -1,4 +1,4 @@
-class MoviesOpenings::Movies 
+class MoviesOpenings::Movies
   attr_accessor :name, :year, :playing, :url 
   
   def self.today
@@ -16,6 +16,6 @@ class MoviesOpenings::Movies
   
   def self.scrape_rottentomatoes
     doc = Nokogiri::HTML(open("https://rottentomatoes.com"))
-    binding.pry 
+    #binding.pry 
   end
 end
