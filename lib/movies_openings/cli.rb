@@ -8,10 +8,9 @@ class MoviesOpenings::CLI
   
   def list_movies
     puts "Today's Movie Openings:"
-    # here doc - https://en.wikipedia.org/wiki/List_of_highest-grossing_openings_for_films
     @movies = MoviesOpenings::Movies.today
     @movies.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.name} - #{movie.year} - #{movie.playing}"
+      puts "#{i}. #{movie.name} - #{movie.release}"
     end
   end
 
@@ -23,12 +22,16 @@ class MoviesOpenings::CLI
       
       if input.to_i > 0
         movie = @movies[input.to_i-1]
-        puts "#{i}. #{movie.name} - #{movie.year} - #{movie.playing}"
+        puts "#{i}. #{movie.name} - #{movie.release}"
       elsif input == "list"
         list_movies
       else
         puts "This option isn't available, please try again."
       end
     end
+  end
+  
+  def goodnight
+    puts "See you tomorrow for more movies!"
   end
 end
