@@ -1,5 +1,5 @@
 class MoviesOpenings::Movies
-  attr_accessor :name, :year, :playing, :url 
+  attr_accessor :name, :playing, :url 
   
   def self.today
     
