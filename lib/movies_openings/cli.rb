@@ -10,7 +10,7 @@ class MoviesOpenings::CLI
     puts "Today's Movie Openings:"
     @movies = MoviesOpenings::Movies.today
     @movies.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.name} - #{movie.release}"
+      puts "#{i}. #{movie.name} - #{movie.plot}"
     end
   end
 
@@ -22,7 +22,7 @@ class MoviesOpenings::CLI
       
       if input.to_i > 0
         movie = @movies[input.to_i-1]
-        puts "#{i}. #{movie.name} - #{movie.release}"
+        puts "#{i}. #{movie.name} - #{movie.plot}"
       elsif input == "list"
         list_movies
       else

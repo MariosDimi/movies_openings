@@ -21,5 +21,7 @@ class MoviesOpenings::Movies
     movie.name = doc.search("h1.a-size-extra-large").text
     movie.plot = doc.search("p.a-size-medium").text
     movie
+    
+    binding.pry 
   end
 end
