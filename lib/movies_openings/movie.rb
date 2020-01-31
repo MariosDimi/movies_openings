@@ -1,5 +1,5 @@
 class MoviesOpenings::Movies
-  attr_accessor :name, :budget, :url 
+  attr_accessor :name, :plot
   
   def self.today
     self.scrape_movies
@@ -15,7 +15,11 @@ class MoviesOpenings::Movies
   
   def self.scrape_boxofficemojo
     doc = Nokogiri::HTML(open("https://www.boxofficemojo.com/release/rl1182631425/?ref_=bo_hm_rd"))
-    name = doc.search("h1.a-size-extra-large").text
-    binding.pry 
+
+    
+    movie = self.new
+    movie.name = doc.search("h1.a-size-extra-large").text
+    movie.plot = doc.search("p.a-size-medium").text
+    movie
   end
 end
