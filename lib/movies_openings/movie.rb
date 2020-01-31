@@ -9,6 +9,7 @@ class MoviesOpenings::Movies
     movies = []
     
     movies << self.scrape_boxofficemojo
+    movies << self.scrape_imdb
     
     movies
   end
@@ -16,12 +17,20 @@ class MoviesOpenings::Movies
   def self.scrape_boxofficemojo
     doc = Nokogiri::HTML(open("https://www.boxofficemojo.com/release/rl1182631425/?ref_=bo_hm_rd"))
 
-    
     movie = self.new
-    movie.name = doc.search("h1.a-size-extra-large").text
-    movie.plot = doc.search("p.a-size-medium").text
-    movie
+    movie.name = doc.search("h1.a-size-extra-large").text.strip
+    movie.plot = doc.search("p.a-size-medium").text.strip
     
-    binding.pry 
+    movie
+  end
+  
+  def self.scrape_imdb
+    doc = Nokogiri::HTML(open("https://www.imdb.com/title/tt2527338/"))
+
+    movie = self.new
+    movie.name = doc.search("h1.class").text.strip
+    movie.plot = doc.search("div class.summary_text").text.strip
+    
+    movie
   end
 end
