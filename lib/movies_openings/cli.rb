@@ -22,7 +22,7 @@ class MoviesOpenings::CLI
       
       if input.to_i > 0
         movie = @movies[input.to_i-1]
-        puts "#{i}. #{movie.name} - #{movie.plot}"
+        puts "#{movie.name} - #{movie.plot}"
       elsif input == "list"
         list_movies
       else
