@@ -28,7 +28,7 @@ class MoviesOpenings::Movies
     doc = Nokogiri::HTML(open("https://www.dccomics.com/characters/birds-of-prey"))
     movie = self.new
     movie.name = doc.search("h1.field-content").text
-    movie.plot = doc.search("p").text
+    movie.plot = doc.search("p")[1].text
     
     movie
   end
