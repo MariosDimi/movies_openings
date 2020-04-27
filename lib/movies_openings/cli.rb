@@ -25,7 +25,7 @@ class MoviesOpenings::CLI
         puts "#{movie.name} - #{movie.plot}"
       elsif input == "list"
         list_movies
-      else
+      elsif
         puts "This option isn't available, please try again."
       end
     end
